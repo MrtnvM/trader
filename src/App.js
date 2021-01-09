@@ -21,9 +21,9 @@ const App = () => {
 			}
 		});
 		async function fetchData() {
+			setPopout(null);
 			const user = await bridge.send('VKWebAppGetUserInfo');
 			setUser(user);
-			setPopout(null);
 		}
 		fetchData();
 	}, []);
@@ -33,7 +33,7 @@ const App = () => {
 	};
 
 	return (
-		<View activePanel={activePanel}>
+		<View activePanel={activePanel} popout={popout}>
 			<Home id='home' fetchedUser={fetchedUser} go={go} />
 			<Persik id='persik' go={go} />
 		</View>
